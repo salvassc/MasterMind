@@ -17,7 +17,6 @@ public class Tablero {
     
     public void iniciarJuego() {
         CombinacionPropuesta combinacionPropuestaUsuario;
-        AlmacenFichas almacen = new AlmacenFichas();
         int reintentosCombinacionPropuesta = 0;
         
         System.out.println("----- MASTERMIND -----");

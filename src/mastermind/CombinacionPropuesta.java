@@ -54,8 +54,8 @@ public class CombinacionPropuesta extends Combinacion{
     }
     
     public boolean comprobarColorFichas(ArrayList<Character> matrizCombinacionPropuesta){
-        int contadorFichasErroneas = 0;
-        AlmacenFichas almacen = new AlmacenFichas();
+        int contadorFichasErroneas = 0;  
+        almacen = new AlmacenFichas();
         
         for(int i = 0; i < matrizCombinacionPropuesta.size(); i++){
             for(int j = 0; j < almacen.getAlmacenFichas().length; j++){
