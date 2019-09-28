@@ -16,7 +16,7 @@ public class Tablero {
     }
     
     public void iniciarJuego() {
-        CombinacionPropuesta combinacionPropuestaUsuario;
+        ProposedCombination combinacionPropuestaUsuario;
         int reintentosCombinacionPropuesta = 0;
         
         System.out.println("----- MASTERMIND -----");
@@ -25,7 +25,7 @@ public class Tablero {
         while(reintentosCombinacionPropuesta < 10){
             do{
                 System.out.print("Propose a combination: ");
-                combinacionPropuestaUsuario = new CombinacionPropuesta(leerCombinacionUsuario());
+                combinacionPropuestaUsuario = new ProposedCombination(leerCombinacionUsuario());
             }while(!combinacionPropuestaUsuario.comprobarCombinacionPropuesta());
             
             anyadirCombinacionPropuestaAlTablero(combinacionPropuestaUsuario, reintentosCombinacionPropuesta);
@@ -48,7 +48,7 @@ public class Tablero {
         }
     }
     
-    public void anyadirCombinacionPropuestaAlTablero(CombinacionPropuesta combinacionPropuestaUsuario, int fila){
+    public void anyadirCombinacionPropuestaAlTablero(ProposedCombination combinacionPropuestaUsuario, int fila){
         for(int i = 0; i < 4; i++)
             matrizTablero[fila][i] = combinacionPropuestaUsuario.obtenerElementoCombinacionPropuesta(i);    
     }

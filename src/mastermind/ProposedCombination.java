@@ -2,11 +2,11 @@ package mastermind;
 
 import java.util.ArrayList;
 
-public class CombinacionPropuesta extends Combinacion{
+public class ProposedCombination extends Combination{
     
     ArrayList<Character> combinacionPropuesta;
     
-    public CombinacionPropuesta (ArrayList<Character> combinacionPropuesta){
+    public ProposedCombination (ArrayList<Character> combinacionPropuesta){
         this.combinacionPropuesta = combinacionPropuesta;
     }
     

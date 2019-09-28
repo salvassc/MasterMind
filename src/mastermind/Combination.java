@@ -1,6 +1,6 @@
 package mastermind;
 
-public class Combinacion {
+public class Combination {
     
     AlmacenFichas almacen;
     
