@@ -10,22 +10,32 @@ public class Result {
         this.damaged = damaged;
     }
     
-    private int getDeads(){
+    public int getDeads(){
         return deads;
     }
     
-    private void setDeads(int deads){
+    public void setDeads(int deads){
         this.deads = deads;
     }
     
-    private int getDamaged(){
+    public int getDamaged(){
         return damaged;
     }
     
-    private void setDamaged(int damaged){
+    public void setDamaged(int damaged){
         this.deads = damaged;
     }
     
+    public void write(Result result){
+        System.out.println(result.getDeads() + " deads and " + result.getDamaged() + " damageds");
+    }
     
-    
+    public boolean isWinner(){
+        if(getDeads() == 4){
+            System.out.println("You've won!!! ;-)");
+            return true;
+        }
+        else
+            return false;
+    }
 }

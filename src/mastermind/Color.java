@@ -1,5 +1,5 @@
 package mastermind;
 
-public enum Color {
-    
+public enum Color { 
+    r,g,b,y,o,p;
 }
