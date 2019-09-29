@@ -3,7 +3,6 @@ package mastermind;
 import java.util.Scanner;
 
 public class Mastermind {
-
    
     public static void main(String[] args) {
         play();
