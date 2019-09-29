@@ -18,7 +18,6 @@ public class Mastermind {
 
             System.out.println("----- MASTERMIND -----");      
             secretPlayer.prepare();  
-
             do{
                 proposedPlayer.propose();
                 secretPlayer.answer();
