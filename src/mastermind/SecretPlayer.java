@@ -20,6 +20,6 @@ public class SecretPlayer {
     }
     
     public void write(){
-        System.out.println(secretCombination.getColorOne().name()+secretCombination.getColorTwo().name()+secretCombination.getColorThree().name()+secretCombination.getColorFour().name());
+        System.out.printf("****\n",secretCombination.getColorOne().name()+secretCombination.getColorTwo().name()+secretCombination.getColorThree().name()+secretCombination.getColorFour().name());
     } 
 }

@@ -12,23 +12,25 @@ public class SecretCombination extends Combination{
         int deads = 0;
         int damageds = 0;
         
-        if(proposedCombination.containsColor(this.getColorOne()))
-            damageds++;
-        if(proposedCombination.containsColor(this.getColorTwo()))
-            damageds++;
-        if(proposedCombination.containsColor(this.getColorThree()))
-            damageds++;
-        if(proposedCombination.containsColor(this.getColorFour()))
+        if(proposedCombination.getColorOne() == this.getColorOne()){
+                deads++;
+        } else if(proposedCombination.containsColor(this.getColorOne()))
             damageds++;
         
-        if(proposedCombination.getColorOne() == this.getColorOne())
-            deads++;
-        if(proposedCombination.getColorTwo() == this.getColorTwo())
-            deads++;
-        if(proposedCombination.getColorThree() == this.getColorThree())
-            deads++;
-        if(proposedCombination.getColorFour() == this.getColorFour())
-            deads++;
+        if(proposedCombination.getColorTwo() == this.getColorTwo()){
+                deads++;
+        } else if(proposedCombination.containsColor(this.getColorTwo()))
+            damageds++;
+        
+        if(proposedCombination.getColorThree() == this.getColorThree()){
+                deads++;
+        } else if(proposedCombination.containsColor(this.getColorThree()))
+            damageds++;
+        
+        if(proposedCombination.getColorFour() == this.getColorFour()){
+                deads++;
+        } else if(proposedCombination.containsColor(this.getColorFour()))
+            damageds++;
         
         proposedCombination.setResult(deads, damageds);
     }
