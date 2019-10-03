@@ -1,41 +1,26 @@
 package mastermind;
 
-public class Result {
-    
-    private int deads;
-    private int damaged;
-    
-    public Result(int deads, int damaged){
-        this.deads = deads;
-        this.damaged = damaged;
-    }
-    
-    public int getDeads(){
-        return deads;
-    }
-    
-    public void setDeads(int deads){
-        this.deads = deads;
-    }
-    
-    public int getDamaged(){
-        return damaged;
-    }
-    
-    public void setDamaged(int damaged){
-        this.deads = damaged;
-    }
-    
-    public void write(Result result){
-        System.out.println(result.getDeads() + " deads and " + result.getDamaged() + " damageds");
-    }
-    
-    public boolean isWinner(){
-        if(getDeads() == 4){
-            System.out.println("You've won!!! ;-)");
-            return true;
-        }
-        else
-            return false;
-    }
+import santaTecla.utils.WithConsoleModel;
+
+class Result extends WithConsoleModel{
+
+	private int blacks = 0;
+
+	private int whites = 0;
+
+	Result(int blacks, int whites) {
+		assert blacks >= 0;
+		assert whites >= 0;
+		this.blacks = blacks;
+		this.whites = whites;
+	}
+
+	boolean isWinner() {
+		return this.blacks == Combination.getWidth();
+	}
+
+	void writeln() {
+		Message.RESULT.writeln(this.blacks, this.whites);
+	}
+	
 }

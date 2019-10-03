@@ -1,47 +1,43 @@
 package mastermind;
 
 import java.util.Random;
+import java.util.Collections;
 
-public class SecretCombination extends Combination{
-    
-    public SecretCombination(){
-        generateSecretCombination();
-    }  
+class SecretCombination extends Combination {
 
-    public void calculateResult(ProposedCombination proposedCombination){
-        int deads = 0;
-        int damageds = 0;
-        
-        if(proposedCombination.getColorOne() == this.getColorOne()){
-                deads++;
-        } else if(proposedCombination.containsColor(this.getColorOne()))
-            damageds++;
-        
-        if(proposedCombination.getColorTwo() == this.getColorTwo()){
-                deads++;
-        } else if(proposedCombination.containsColor(this.getColorTwo()))
-            damageds++;
-        
-        if(proposedCombination.getColorThree() == this.getColorThree()){
-                deads++;
-        } else if(proposedCombination.containsColor(this.getColorThree()))
-            damageds++;
-        
-        if(proposedCombination.getColorFour() == this.getColorFour()){
-                deads++;
-        } else if(proposedCombination.containsColor(this.getColorFour()))
-            damageds++;
-        
-        proposedCombination.setResult(deads, damageds);
-    }
-    
-    private void generateSecretCombination(){
-        do{
-            setColorOne(Color.values()[new Random().nextInt(Color.values().length)]);
-            setColorTwo(Color.values()[new Random().nextInt(Color.values().length)]);
-            setColorThree(Color.values()[new Random().nextInt(Color.values().length)]);
-            setColorFour(Color.values()[new Random().nextInt(Color.values().length)]);
-        }while(getColorOne() == getColorTwo() || getColorOne() == getColorThree() || getColorOne() == getColorFour()
-                || getColorTwo() == getColorThree() || getColorTwo() == getColorFour() || getColorThree() == getColorFour());
-    }
+	SecretCombination() {
+		for(Color color : Color.values()){
+			this.colors.add(color);
+		}
+		Random random = new Random(System.currentTimeMillis());
+		final int erased = colors.size() - Combination.getWidth();
+		for (int i = 0; i < erased; i++) {
+			this.colors.remove(random.nextInt(this.colors.size()));
+		}
+		Collections.shuffle(this.colors);
+	}
+
+	Result getResult(ProposedCombination proposedCombination) {
+		int blacks = 0;
+		for (int i=0; i<this.colors.size(); i++) {
+			if (proposedCombination.contains(this.colors.get(i), i)) {
+				blacks++;
+			}
+		}
+		int whites = 0;
+		for (Color color : this.colors) {
+			if (proposedCombination.contains(color)) {
+				whites++;
+			}
+		}
+		return new Result(blacks, whites - blacks);
+	}
+
+	void writeln() {
+		for (int i = 0; i < this.colors.size(); i++) {
+			Message.SECRET.write();
+		}
+		Message.NEW_LINE.write();
+	}
+
 }
