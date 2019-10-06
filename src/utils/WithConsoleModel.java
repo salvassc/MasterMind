@@ -1,11 +1,11 @@
-package santaTecla.utils;
+package utils;
 
 public abstract class WithConsoleModel {
 
-	protected Console console;
+	protected IO console;
 
 	protected WithConsoleModel() {
-		this.console = new Console();
+		this.console = new IO();
 	}
 	
 }
