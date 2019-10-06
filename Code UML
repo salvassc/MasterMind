@@ -1,0 +1,92 @@
+@startuml
+
+package Controllers <<Folder>>{
+class Controller
+class ControllerVisitor
+class Logic
+class ProposedCombinationController
+class ResumeController
+class StartController
+}
+
+package Views <<Folder>>{
+interface View
+}
+
+package Views.Console <<Folder>>{
+class CombinationView
+class ConsoleView
+class GameView
+class MessageView
+class ProposedCombinationView
+class SecretCombinationView
+}
+
+package models <<Folder>>{
+enum Color
+class Combination
+enum Error
+class Game
+class ProposedCombination
+class Result
+class SecretCombination
+class State
+enum StateValue
+}
+
+package Utils <<Folder>>{
+class Console
+class WithConsoleModel
+class YesNoDialog
+}
+
+Mastermind *-down-> Logic
+Mastermind *-down-> View
+
+View ..> Controller
+
+View <|-down- ConsoleView
+ConsoleView *-down-> SecretCombinationView
+ConsoleView *-down-> ProposedCombinationView
+ConsoleView *-down-> CombinationView
+ConsoleView *-down-> MessageView
+ConsoleView *-down-> GameView
+
+Controller <|-down- StartController
+Controller <|-down- ProposedCombinationController
+Controller <|-down- ResumeController
+
+class Logic
+Logic *-down-> StartController
+Logic *-down-> ProposedCombinationController
+Logic *-down-> ResumeController
+Logic *-down-> Game
+Logic *-down-> State
+
+interface ControllerVisitor
+
+ControllerVisitor <|-down- View
+Controller ..> ControllerVisitor
+
+Controller --> Game
+Controller --> State
+
+Mastermind *--> Game
+
+SecretCombination ..> ProposedCombination
+SecretCombination ..> Result
+
+Combination *--> Color
+Combination <|-- ProposedCombination
+Combination <|-- SecretCombination
+
+ProposedCombination o--> Result
+
+WithConsoleModel <|-- YesNoDialog
+WithConsoleModel <|-- Combination
+WithConsoleModel <|-- Result
+
+Game *--> SecretCombination
+State *--> StateValue
+
+@enduml
