@@ -1,6 +1,6 @@
 package mastermind.views.console;
 
-import utils.IO;
+import utils.Console;
 
 public enum MessageView {
     ATTEMPTS("#attempts attempt(s): "), 
@@ -14,10 +14,10 @@ public enum MessageView {
     NEW_LINE("\n");
 
     private String message;
-    static private IO console; 
+    static private Console console; 
     
     static {
-        MessageView.console = new IO();
+        MessageView.console = new Console();
     }
 
     private MessageView(String message) {

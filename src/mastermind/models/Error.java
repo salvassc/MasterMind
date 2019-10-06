@@ -1,6 +1,6 @@
 package mastermind.models;
 
-import utils.IO;
+import utils.Console;
 
 public enum Error {
     DUPLICATED("Repeated colors"),
@@ -14,6 +14,6 @@ public enum Error {
     }
 
     public void writeln() {
-        new IO().writeln(this.message);		
+        new Console().writeln(this.message);		
     }
 }

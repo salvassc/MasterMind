@@ -1,6 +1,6 @@
 package mastermind.models;
 
-import utils.IO;
+import utils.Console;
 
 public enum Color {
     RED('r'), 
@@ -43,6 +43,6 @@ public enum Color {
     }
 
     void write() {
-        new IO().write(this.initial);
+        new Console().write(this.initial);
     }
 }

@@ -1,7 +1,7 @@
 package mastermind.views.console;
 
 import mastermind.controllers.Controller;
-import utils.IO;
+import utils.Console;
 import mastermind.models.SecretCombination;
 
 public class SecretCombinationView extends CombinationView{
@@ -13,7 +13,7 @@ public class SecretCombinationView extends CombinationView{
     }
     
     public void writeln() {
-        IO console = new IO();
+        Console console = new Console();
         
         for (int i = 0; i < this.controller.getWidth(); i++)
             console.write(MessageView.SECRET.getMessage());

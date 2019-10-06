@@ -2,10 +2,10 @@ package utils;
 
 public abstract class WithConsoleModel {
 
-	protected IO console;
+	protected Console console;
 
 	protected WithConsoleModel() {
-		this.console = new IO();
+		this.console = new Console();
 	}
 	
 }
