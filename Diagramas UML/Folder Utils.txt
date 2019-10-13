@@ -1,0 +1,10 @@
+package utils <<Folder>>{
+
+Menu *-->  Command
+
+WithConsole *--> Console
+YesNoDialog <|-- WithConsole
+Console ..> ClosedInterval
+
+class TCPIP
+}

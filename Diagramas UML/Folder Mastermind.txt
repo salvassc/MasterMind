@@ -1,0 +1,16 @@
+package mastermind <<Folder>>{
+Mastermind <|-- MastermindStandalone
+}
+
+package mastermind.controllers <<Folder>>{
+Logic <--* Mastermind
+AcceptorController <.. Mastermind
+}
+
+package mastermind.views <<Folder>>{
+view <--* Mastermind
+}
+
+package mastermind.views.console <<Folder>>{
+ConsoleView <.. Mastermind
+}

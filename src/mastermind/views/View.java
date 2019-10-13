@@ -1,9 +1,10 @@
 package mastermind.views;
 
-import mastermind.controllers.Controller;
-import mastermind.controllers.ControllerVisitor;
+import mastermind.controllers.AcceptorController;
+import mastermind.controllers.ControllersVisitor;
 
-public abstract class View implements ControllerVisitor {
+public abstract class View implements ControllersVisitor {
     
-    public abstract void interact(Controller controller);
+    public abstract void interact(AcceptorController acceptorController);
+
 }

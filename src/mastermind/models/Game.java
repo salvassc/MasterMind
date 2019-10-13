@@ -2,15 +2,16 @@ package mastermind.models;
 
 import java.util.ArrayList;
 import java.util.List;
-import mastermind.views.console.MessageView;
-import utils.WithConsoleModel;
 
-public class Game extends WithConsoleModel{
-    
+import mastermind.types.Color;
+
+public class Game {
+
     private static final int MAX_LONG = 10;
-    SecretCombination secretCombination;
+    private SecretCombination secretCombination;
     private List<ProposedCombination> proposedCombinations;
     private List<Result> results;
+    private int attempts;
 
     public Game() {
         this.clear();
@@ -20,54 +21,30 @@ public class Game extends WithConsoleModel{
         this.secretCombination = new SecretCombination();
         this.proposedCombinations = new ArrayList<ProposedCombination>();
         this.results = new ArrayList<Result>();
-    }
-
-    public void writeln() {
-        this.console.writeln();
-        MessageView.ATTEMPTS.writeln(this.getAttemps());
-        this.secretCombination.writeln();
-        for (int i = 0; i < this.getAttemps(); i++) {
-            this.proposedCombinations.get(i).write();
-            this.results.get(i).writeln();
-        }
-    }
-
-    public boolean isFinished() {
-        if (this.results.get(this.getAttemps() - 1).isWinner()) {
-            MessageView.WINNER.writeln();
-            return true;
-        }
-        if (this.getAttemps() == MAX_LONG) {
-            MessageView.LOOSER.writeln();
-            return true;
-        }
-        return false;
-    }
-
-    public int getAttemps() {
-        return this.proposedCombinations.size();
-    }
-    
-    public SecretCombination getSecretCombination(){
-        return this.secretCombination;
-    }
-
-    public List<ProposedCombination> getProposedCombinations(){
-        return proposedCombinations;
-    }
-    
-    public  List<Result> getResults(){
-        return results;
-    }
-
-    public int getWidth() {
-        return Combination.getWidth();
+        this.attempts = 0;
     }
 
     public void addProposedCombination(List<Color> colors) {
-        ProposedCombination proposedCombination = new ProposedCombination();
+        ProposedCombination proposedCombination = new ProposedCombination(colors);
         this.proposedCombinations.add(proposedCombination);
         this.results.add(this.secretCombination.getResult(proposedCombination));
+        this.attempts++;
+    }
+
+    public boolean isLooser() {
+        return this.attempts == Game.MAX_LONG;
+    }
+
+    public boolean isWinner() {
+        return this.results.get(this.attempts-1).isWinner();
+    }
+
+    public int getAttempts() {
+        return this.attempts;
+    }
+    
+    public void setAttempts(int attemps) {
+        this.attempts = attemps;
     }
 
     public List<Color> getColors(int position) {
@@ -81,4 +58,22 @@ public class Game extends WithConsoleModel{
     public int getWhites(int position) {
         return this.results.get(position).getWhites();
     }
+
+    public int getWidth() {
+        return Combination.getWidth();
+    }
+
+    public Memento createMemento() {
+        Memento memento = new Memento();
+        memento.addProposedCombination(this.proposedCombinations.get(this.attempts -1));
+        memento.addResults(this.results.get(this.attempts -1));
+        return memento;
+    }
+
+    void restore(Memento memento) {
+        this.proposedCombinations.remove(memento.getProposedCombination(0));
+        this.results.remove(memento.getResult(0));
+        this.attempts--;
+    }
+
 }

@@ -1,30 +1,18 @@
 package mastermind.controllers;
 
-import mastermind.models.Game;
-import mastermind.models.State;
+import mastermind.models.Session;
 
-public class ResumeController extends Controller {
+public abstract class ResumeController extends AcceptorController {
 
-    public ResumeController(Game game, State state) {
-        super(game, state);
+    public ResumeController(Session session) {
+        super(session);
     }
-    
-    public void resume (boolean newGame) {
-        if (newGame) {
-            this.game.clear();
-            this.state.reset();
-        } 
-        else 
-            this.state.next();
-    }
-    
+
+    public abstract void resume(boolean newGame);
+
     @Override
-    public void accept(ControllerVisitor controllerVisitor) {
-        controllerVisitor.visit(this);
+    public void accept(ControllersVisitor controllersVisitor) {
+        controllersVisitor.visit(this);
     }
 
-    public void next() {
-        this.state.next();
-    }
-    
 }

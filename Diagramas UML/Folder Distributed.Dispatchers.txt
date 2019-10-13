@@ -1,0 +1,26 @@
+package mastermind.distributed.dispatchers <<Folder>>{
+
+DispatcherPrototype o--> Dispatcher
+DispatcherPrototype ..> FrameType
+DispatcherPrototype *--> TCPIP
+
+Dispatcher --> TCPIP
+Dispatcher <|-- ExistsDispatcher
+Dispatcher <|-- GetTitleDispatcher
+Dispatcher <|-- HasNameDispatcher
+Dispatcher <|-- NextDispatcher
+Dispatcher <|-- ProposeCombinationDispatcher
+Dispatcher <|-- RedoDispatcher
+Dispatcher <|-- RedoableDispatcher
+Dispatcher <|-- ResumeDispatcher
+Dispatcher <|-- SaveDispatcher
+Dispatcher <|-- SaveNamedDispatcher
+Dispatcher <|-- SetTitleDispatcher
+Dispatcher <|-- StartDispatcher
+Dispatcher <|-- StartNameDispatcher
+Dispatcher <|-- StateDispatcher
+Dispatcher <|-- TitlesDispatcher
+Dispatcher <|-- UndoDispatcher
+Dispatcher <|-- UndoableDispatcher
+
+}

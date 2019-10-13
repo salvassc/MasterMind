@@ -1,0 +1,42 @@
+package controllers <<Folder>>{
+
+AcceptorController <|-- StartController
+AcceptorController <|-- ResumeController
+AcceptorController <|-- SaveController
+AcceptorController <|-- PlayController
+AcceptorController <|-- Controller
+
+Controller <|-- RedoController
+Controller <|-- UndoController
+Controller <|-- ProposalController
+Controller <|-- ExitController
+
+Logic *--> AcceptorController
+
+AcceptorController ..> ControllersVisitor
+ControllersVisitor ..> StartController
+ControllersVisitor ..> ResumeController
+ControllersVisitor ..> SaveController
+ControllersVisitor ..> PlayController
+
+}
+
+package controllers.implementation <<Folder>>{
+
+LogicImplementation *--> StartControllerImplementation
+LogicImplementation *--> ResumeControllerImplementation
+LogicImplementation *--> SaveControllerImplementation
+LogicImplementation *--> PlayControllerImplementation
+
+LogicImplementation --|> Logic
+StartControllerImplementation --|> StartController
+ResumeControllerImplementation --|> ResumeController
+SaveControllerImplementation --|> SaveController
+PlayControllerImplementation --|> PlayController
+
+PlayControllerImplementation *--> RedoController
+PlayControllerImplementation *--> UndoController
+PlayControllerImplementation *--> ProposalController
+PlayControllerImplementation *--> ExitController
+
+}

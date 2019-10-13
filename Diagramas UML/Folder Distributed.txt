@@ -1,0 +1,12 @@
+package Distributed <<Folder>>{
+
+MastermindClient o--> LogicProxy
+MastermindServer *--> LogicImplementationServer
+
+LogicProxy ..> SessionProxy
+LogicProxy ..> ResumeControllerProxy
+LogicProxy ..> StartControllerProxy
+LogicProxy ..> SaveControllerProxy
+LogicProxy ..> PlayControllerProxy
+
+}

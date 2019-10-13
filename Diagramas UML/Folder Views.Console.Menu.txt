@@ -1,0 +1,26 @@
+package mastermind.views.console.menu <<Folder>>{
+
+Command <|--  ExitCommand
+Command <|-- NewGameCommand
+Command <|--  OpenGameCommand
+Command <|--  ProposedCommand
+Command <|--  RedoCommand
+Command <|--  UndoCommand
+
+ExitCommand ..> CommandTitle
+NewGameCommand ..> CommandTitle
+OpenGameCommand ..> CommandTitle
+ProposedCommand ..> CommandTitle
+RedoCommand ..> CommandTitle
+UndoCommand ..> CommandTitle
+
+GameSelectecMenu ..> GameSelectedCommand
+PlayMenu ..> ExitCommand
+PlayMenu ..> RedoCommand
+PlayMenu ..> UndoCommand
+PlayMenu ..> ProposedCommand
+
+StartMenu ..> NewGameCommand
+StartMenu ..> OpenGameCommand
+class CommandTitle
+}

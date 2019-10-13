@@ -2,28 +2,20 @@ package mastermind.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
-import mastermind.models.Game;
-import mastermind.models.State;
+import mastermind.models.Session;
 import mastermind.models.StateValue;
 
 public class Logic {
-    
-    private final State state;
-    private Game game;
-    private Map<StateValue, Controller> controllers;
-    
+	
+    protected Session session;
+    public Map<StateValue, AcceptorController> acceptorcontrollers;
+
     public Logic() {
-        this.state = new State();
-        this.game = new Game();
-        this.controllers = new HashMap<>();
-        this.controllers.put(StateValue.INITIAL, new StartController(this.game, this.state));
-        this.controllers.put(StateValue.IN_GAME, new ProposedCombinationController(this.game, this.state));
-        this.controllers.put(StateValue.FINAL, new ResumeController(this.game, this.state));
-        this.controllers.put(StateValue.EXIT, null);
+        this.acceptorcontrollers = new HashMap<StateValue, AcceptorController>();
     }
-    
-    public Controller getController() {
-        return this.controllers.get(this.state.getStatueValue());
+
+    public AcceptorController getController() {
+        return this.acceptorcontrollers.get(this.session.getValueState());
     }
-     
+	
 }

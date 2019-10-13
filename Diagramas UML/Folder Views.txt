@@ -1,0 +1,35 @@
+package mastermind.views <<Folder>>{
+class View
+}
+
+package santaTecla.Utils <<Folder>>{
+class WithConsoleView
+}
+
+package mastermind.views <<Folder>>{
+class View
+class MessageView
+}
+
+package mastermind.views.console <<Folder>>{
+ConsoleView --|> View
+AttempView --|> WithConsoleView
+mastermind.views.console.ColorView --|> mastermind.views.ColorView
+mastermind.views.console.ErrorView --|> mastermind.views.ErroView
+ProposalView --|> WithConsoleView
+ProposedCombinationView --|> WithConsoleView
+ResultView --|> WithConsoleView
+SecretCombinationView --|> WithConsoleView
+StartView --|> WithConsoleView
+
+ConsoleView ..> MessageView
+AttempView ..> MessageView
+mastermind.views.console.ColorView ..> MessageView
+mastermind.views.console.ErrorView ..> MessageView
+ProposalView ..> MessageView
+ProposedCombinationView ..> MessageView
+ResultView ..> MessageView
+SecretCombinationView ..> MessageView
+StartView ..> MessageView
+
+}

@@ -1,11 +1,9 @@
 package mastermind.models;
 
-import mastermind.views.console.MessageView;
-import utils.WithConsoleModel;
-
-class Result extends WithConsoleModel{
+class Result {
 
     private int blacks = 0;
+
     private int whites = 0;
 
     Result(int blacks, int whites) {
@@ -19,15 +17,17 @@ class Result extends WithConsoleModel{
         return this.blacks == Combination.getWidth();
     }
 
-    void writeln() {
-        MessageView.RESULT.writeln(this.blacks, this.whites);
+    int getBlacks() {
+        return this.blacks;
     }
-    
-    public int getBlacks() {
-        return blacks;
+
+    int getWhites() {
+        return this.whites;
     }
-    
-    public int getWhites() {
-        return whites;
+
+    public Result copy() {
+        Result copy = new Result(this.blacks, this.whites);
+        return copy;
     }
+
 }

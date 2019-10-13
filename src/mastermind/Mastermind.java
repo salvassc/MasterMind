@@ -1,31 +1,31 @@
 package mastermind;
 
-import static java.lang.System.exit;
-import mastermind.controllers.Controller;
+import mastermind.controllers.AcceptorController;
 import mastermind.controllers.Logic;
 import mastermind.views.View;
 import mastermind.views.console.ConsoleView;
 
-public class Mastermind {
-    
+public abstract class Mastermind {
+	
     private Logic logic;
     private View view;
-    
-    private Mastermind() {
-        this.logic = new Logic();
+
+    protected Mastermind() {
+        this.logic = this.createLogic();
         this.view = new ConsoleView();
     }
 
-    public static void main(String[] args) {
-	new Mastermind().play();
+    protected void play() {
+        AcceptorController acceptorController;
+        do {
+            acceptorController = this.logic.getController();
+            if (acceptorController != null){
+                this.view.interact(acceptorController);
+            }
+        } while (acceptorController != null); 
     }
     
-    public void play() {
-        Controller controller;
-        do{
-            controller = this.logic.getController();
-            if (controller != null)
-                this.view.interact(controller);
-        } while (controller != null);
-    }
+    protected abstract Logic createLogic();
+	
 }
+
