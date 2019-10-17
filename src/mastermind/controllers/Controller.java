@@ -1,6 +1,5 @@
 package mastermind.controllers;
 
-import mastermind.models.Combination;
 import mastermind.models.Session;
 
 public abstract class Controller {
@@ -9,10 +8,6 @@ public abstract class Controller {
 
     Controller(Session session) {
         this.session = session;
-    }
-
-    public int getWidth() {
-        return Combination.getWidth();
     }
     
     public abstract void control();
