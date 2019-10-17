@@ -1,0 +1,22 @@
+package models <<Folder>>{
+Session *--> State
+Session *--> Game
+
+Game *--> Result
+Game *--> SecretCombination
+Game --> ProposedCombination
+
+Combination <|-- SecretCombination
+Combination <|-- ProposedCombination
+
+SecretCombination ..> Result
+SecretCombination ..> ProposedCombination
+
+State --> StateValue
+}
+
+package types <<Folder>>{
+Combination *--> Color
+ProposedCombination ..> Error
+Game ..> Error
+}

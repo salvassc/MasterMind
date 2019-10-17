@@ -1,0 +1,22 @@
+package mastermind <<Folder>>{
+class Mastermind
+}
+
+package controllers <<Folder>>{
+
+Mastermind *-down-> StartController
+Mastermind *-down-> ProposalController
+Mastermind *-down-> ResumeController
+
+
+Controller <|-down- StartController
+Controller <|-down- ProposalController
+Controller <|-down- ResumeController
+}
+
+package models <<Folder>>{
+Mastermind *-down-> Session
+Session <-- Controller
+Session *-down-> State
+Session *-down-> Game
+}

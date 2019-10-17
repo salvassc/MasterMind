@@ -1,35 +1,40 @@
 package mastermind;
 
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
+import mastermind.controllers.Controller;
+import mastermind.controllers.ProposalController;
+import mastermind.controllers.ResumeController;
+import mastermind.controllers.StartController;
+import mastermind.models.Session;
+import mastermind.models.StateValue;
 
 public class Mastermind {
-   
-    public static void main(String[] args) {
-        play();
-    }
-    
-    private static void play(){
-        String readResponse;
-        
-        do{
-            ProposedPlayer proposedPlayer = new ProposedPlayer();
-            SecretPlayer secretPlayer = new SecretPlayer(proposedPlayer);
 
-            System.out.println("----- MASTERMIND -----");      
-            secretPlayer.prepare();  
-            do{
-                proposedPlayer.propose();
-                secretPlayer.answer();
-                proposedPlayer.setAttemps(proposedPlayer.getAttemps()+1);
-                secretPlayer.answer();
-                proposedPlayer.writeAttemps();
-                secretPlayer.write();
-                proposedPlayer.writeProposeCombinations();
-            } while(!proposedPlayer.islooser() && !proposedPlayer.isWinner());
-            System.out.print("Do you want to continue? (s/n): ");
-            Scanner scanner = new Scanner(System.in);
-            readResponse = scanner.next();
-        } while(readResponse.equals("s")); 
+    private Session session;
+    private Map<StateValue, Controller> controllers;
+
+    protected Mastermind() {
+        this.session = new Session();
+        this.controllers = new HashMap<StateValue, Controller>();
+        
+        this.controllers.put(StateValue.INITIAL, new StartController(this.session));
+        this.controllers.put(StateValue.IN_GAME, new ProposalController(this.session));
+        this.controllers.put(StateValue.RESUME, new ResumeController(this.session));
+        this.controllers.put(StateValue.EXIT, null);
     }
     
+    void play() {
+        Controller controller;
+        do{
+            controller = this.controllers.get(this.session.getValueState());
+            if(controller != null)
+                controller.control();
+        } while(controller != null);
+    }
+    
+    public static void main(String[] args) {
+        new Mastermind().play();
+    }
+
 }

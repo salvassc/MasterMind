@@ -1,0 +1,9 @@
+package controllers <<Folder>>{
+Controller <|-down- StartController
+Controller <|-down- ProposalController
+Controller <|-down- ResumeController
+}
+
+package models <<Folder>>{
+Session <-- Controller
+}
