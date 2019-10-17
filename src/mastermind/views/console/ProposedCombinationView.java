@@ -2,6 +2,7 @@ package mastermind.views.console;
 
 import java.util.ArrayList;
 import java.util.List;
+import mastermind.models.Session;
 import mastermind.types.Color;
 import santaTecla.utils.WithConsoleView;
 import mastermind.views.MessageView;

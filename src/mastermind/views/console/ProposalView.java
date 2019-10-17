@@ -8,25 +8,19 @@ import mastermind.views.MessageView;
 
 public class ProposalView extends WithConsoleView {
     
-    private SecretCombinationView secretCombinationView;
-    private ProposedCombinationView proposedCombinationView;
-    private ResultView resultView;
     private Session session;
     
     public ProposalView(Session session){
         this.session = session;
-        this.secretCombinationView = new SecretCombinationView();
-        this.proposedCombinationView = new ProposedCombinationView();
-        this.resultView = new ResultView(session);
     }
 
     public boolean write(List<Color> colors) {
         this.console.writeln();
         new AttemptsView(this.session).writeln();
-        this.secretCombinationView.writeln();
+        new SecretCombinationView().writeln();
         for (int i = 0; i < this.session.getAttempts(); i++) {
-            this.proposedCombinationView.write(colors);
-            this.resultView.writeln(i);
+            new ProposedCombinationView().write(this.session.getColors(i));
+            new ResultView(session).writeln(i);
         }
         if (this.session.isWinner()) {
             this.console.writeln(MessageView.WINNER.getMessage());

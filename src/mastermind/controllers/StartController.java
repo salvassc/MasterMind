@@ -11,7 +11,7 @@ public class StartController extends Controller {
 
     @Override
     public void control() {
-        new StartView();
+        new StartView().write();
         this.session.next();
         
     }

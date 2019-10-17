@@ -3,6 +3,7 @@ package mastermind.views.console;
 import mastermind.views.MessageView;
 import santaTecla.utils.WithConsoleView;
 import mastermind.models.Combination;
+import mastermind.models.Session;
 
 class SecretCombinationView extends WithConsoleView {
 

@@ -6,11 +6,11 @@ import santaTecla.utils.Console;
 class ColorView extends mastermind.views.ColorView {
 
 	ColorView(Color color) {
-		super(color);
+            super(color);
 	}
 	
 	void write() {
-		new Console().write(ColorView.INITIALS[this.color.ordinal()]);
+            new Console().write(ColorView.INITIALS[this.color.ordinal()]);
 	}
 
 }

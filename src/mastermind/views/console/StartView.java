@@ -4,8 +4,8 @@ import mastermind.views.MessageView;
 import santaTecla.utils.WithConsoleView;
 
 public class StartView extends WithConsoleView {
-
-    public StartView (){
+    
+    public void write(){
         console.writeln(MessageView.TITLE.getMessage());
         new SecretCombinationView().writeln();
     }

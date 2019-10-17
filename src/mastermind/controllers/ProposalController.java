@@ -26,7 +26,7 @@ public class ProposalController extends Controller {
                 } else {
                     for (int j = i+1; j < colors.size(); j++) {
                         if (colors.get(i) == colors.get(j)) {
-                                error = Error.DUPLICATED;
+                            error = Error.DUPLICATED;
                         }
                     }
                 }				

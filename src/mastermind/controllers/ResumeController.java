@@ -11,10 +11,8 @@ public class ResumeController extends Controller {
 
     @Override
     public void control() {
-        if(new ResumeView().write()){
+        if(new ResumeView().write())
             this.session.clear();
-          
-        }
         else
             this.session.next();
     }

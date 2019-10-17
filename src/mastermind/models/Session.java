@@ -32,7 +32,7 @@ public class Session {
     public List<Color> getColors(int position) {
         return this.game.getColors(position);
     }
-
+    
     public int getBlacks(int i) {
         return this.game.getBlacks(i);
     }
