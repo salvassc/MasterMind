@@ -6,7 +6,7 @@ import mastermind.models.Session;
 import mastermind.types.Color;
 import mastermind.views.console.ErrorView;
 import mastermind.types.Error;
-import mastermind.views.console.ProposalView;
+import mastermind.views.console.GameView;
 import mastermind.views.console.ProposedCombinationView;
 
 public class ProposalController extends Controller {
@@ -49,7 +49,7 @@ public class ProposalController extends Controller {
                 if (error != null)
                     new ErrorView(error).writeln();
             }while(error != null);
-        }while (!new ProposalView(session).write(colors));
+        }while (!new GameView(session).write(colors));
         this.session.next();
     }
 

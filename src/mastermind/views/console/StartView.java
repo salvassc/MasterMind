@@ -7,7 +7,6 @@ public class StartView extends WithConsoleView {
     
     public void write(){
         console.writeln(MessageView.TITLE.getMessage());
-        new SecretCombinationView().writeln();
     }
 
 }

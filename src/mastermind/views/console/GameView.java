@@ -6,11 +6,11 @@ import mastermind.types.Color;
 import santaTecla.utils.WithConsoleView;
 import mastermind.views.MessageView;
 
-public class ProposalView extends WithConsoleView {
+public class GameView extends WithConsoleView {
     
     private Session session;
     
-    public ProposalView(Session session){
+    public GameView(Session session){
         this.session = session;
     }
 
